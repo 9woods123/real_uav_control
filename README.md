@@ -15,7 +15,15 @@ For using this,  some dependences are followed
 
 make the workshop 
 
-`catkin_make`
+
+```
+cd your_catkin_name
+
+git clone https://github.com/9woods123/real_uav_control.git
+
+catkin_make
+
+```
 
 and launch the uav control nodes:
 
