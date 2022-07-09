@@ -31,3 +31,5 @@ and launch the uav control nodes:
 
 `roslaunch  move_control  real_world_uav.launch`
 
+
+The uav_simple_control.cpp is a tutorial code.  Fix your algorithm , sending the target point like it does and replace the `uav_simple_control`
