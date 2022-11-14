@@ -13,7 +13,7 @@ Some dependences are followed
 
 `sudo apt-get  install  ros-melodic-vrpn`
 
-`sudo apt-get install  ros-melodic-mavros-msgs `
+`sudo apt-get install  ros-melodic-mavros* `
 
 then
 
@@ -30,7 +30,7 @@ and launch the uav control nodes:
 
 `source  your_catkin_name/devel/setup.bash `
 
-`roslaunch  move_control  real_world_uav.launch`
+`roslaunch  move_control  real_uav.launch`
 
 
 The uav_simple_control.cpp is a tutorial code.  Fix your algorithm , sending the target point like it does and replace the `uav_simple_control`.
