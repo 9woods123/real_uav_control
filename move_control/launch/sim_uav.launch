@@ -1,0 +1,24 @@
+<launch>
+  <arg name="mav_name" default="UAV_"/>
+  <arg name="subscript" default="6" />
+
+
+
+  <group ns="$(arg mav_name)$(arg subscript)">
+
+     <node pkg="move_control" type="mavros_px4ctrl_node" name="mavros_px4ctrl_node" output="screen" >
+          <param name="uav_name" value="/$(arg mav_name)$(arg subscript)"/>
+          <param name="Takeoff_heiget" value="1"/>
+    </node>
+
+    <!-- Your algorithm here-->
+    <node pkg="move_control" type="uav_simple_control"  name="uav_simple_control"  output="screen" >          
+      <param name="uav_name" value="/$(arg mav_name)$(arg subscript)"/>
+    </node>
+
+<!--
+    <include file="$(realsense2_camera)/rs_camera.launch"/>
+-->
+
+  </group>
+</launch>

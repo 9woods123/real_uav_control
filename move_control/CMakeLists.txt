@@ -3,6 +3,7 @@ project(move_control)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON) 
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -19,6 +20,7 @@ find_package(catkin REQUIRED COMPONENTS
   tf2_ros
   tf2_eigen
   mavros_msgs
+  
 )
 
 ## System dependencies are found with CMake's conventions
@@ -87,6 +89,7 @@ find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
   sensor_msgs
   std_msgs
+  
  )
 
 ################################################
@@ -119,9 +122,9 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-  INCLUDE_DIRS
-#  LIBRARIES move_contorl
-  CATKIN_DEPENDS roscpp std_msgs message_runtime
+  INCLUDE_DIRS include
+  LIBRARIES move_contorl
+  CATKIN_DEPENDS roscpp std_msgs message_runtime 
 #  DEPENDS system_lib
 )
 
@@ -131,6 +134,7 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
+
 include_directories(
   include 
   ${catkin_INCLUDE_DIRS} 
@@ -145,16 +149,20 @@ include_directories(
 #   src/${PROJECT_NAME}/move_contorl.cpp
 # )
 
+#[[add_library(${PROJECT_NAME}
+        src/mavros_px4ctrl.cpp
+)]]
 
-add_executable(single_uav_control src/single_uav_control.cpp)
-#add_dependencies(pos_control move_control_gencpp) 
-target_link_libraries(single_uav_control ${catkin_LIBRARIES})
+#[[
+add_dependencies(pos_control move_control_gencpp)
+]]
+
+add_executable(mavros_px4ctrl_node src/mavros_px4ctrl_node.cpp src/mavros_px4ctrl.cpp)
+target_link_libraries(mavros_px4ctrl_node ${catkin_LIBRARIES})
 
 
 add_executable(uav_simple_control src/uav_simple_control.cpp)
-#add_dependencies(pos_control move_control_gencpp) 
 target_link_libraries(uav_simple_control ${catkin_LIBRARIES})
-
 
 
 ## Add cmake target dependencies of the library
