@@ -170,7 +170,6 @@ void mavros2px4::send_pos_setpoint(const Eigen::Vector3d target_pos, float yaw_s
 
 void mavros2px4::mainloop(const ros::TimerEvent &event) {
 
-    while (ros::ok()) {
         /* code for loop body */
         switch (mode.data) {
 
@@ -309,7 +308,6 @@ void mavros2px4::mainloop(const ros::TimerEvent &event) {
         }
 
         ros::spinOnce();
-    }
 
 }
 
