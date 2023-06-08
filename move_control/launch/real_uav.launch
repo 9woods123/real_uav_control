@@ -26,7 +26,7 @@
 
   <group ns="$(arg mav_name)$(arg subscript)">
 
-      <include file="$(mavros)/launch/px4.launch">
+      <include file="$(find mavros)/launch/px4.launch">
       	    <arg name="fcu_url" default="/dev/ttyUSB0:92600" />
             <arg name="tgt_system" default="$(arg subscript)" />
       </include>
